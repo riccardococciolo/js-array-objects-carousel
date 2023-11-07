@@ -30,6 +30,10 @@ for (let i = 0; i < images.length; i++ ) {
     imageString += `
     <div class="item">
         <img src="${curImage.image}" alt="">
+        <div class="text-container">
+            <h2>${curImage.title}</h2>
+            <p>${curImage.text}</p>
+        </div>
     </div>`;
 }
 
