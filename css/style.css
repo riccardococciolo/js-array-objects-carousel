@@ -20,8 +20,7 @@
 }
 
 .item {
-    height: 300px;
-    width: 700px;
+    height: 100%;
     display: none;
     position: relative;
 }
@@ -47,6 +46,7 @@
 
 .thumbs {
     height: 300px;
+    width: 200px;
     background: #000;
     position: relative;
 }
