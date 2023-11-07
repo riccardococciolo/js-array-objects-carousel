@@ -47,20 +47,28 @@ let currentIndex = 0;
 const slideElem = document.querySelectorAll(".item");
 slideElem[currentIndex].classList.add("active");
 
+const thumbElem = document.querySelectorAll(".thumb");
+thumbElem[currentIndex].classList.add("active");
+
 document.querySelector(".next").addEventListener("click", function () {
     if (currentIndex < slideElem.length - 1) {
         slideElem[currentIndex].classList.remove("active");
+        thumbElem[currentIndex].classList.remove("active");
         currentIndex++;
         slideElem[currentIndex].classList.add("active");
+        thumbElem[currentIndex].classList.add("active");
     } else {
         slideElem[currentIndex].classList.remove("active");
+        thumbElem[currentIndex].classList.remove("active");
         currentIndex = 0;
         slideElem[currentIndex].classList.add("active");
+        thumbElem[currentIndex].classList.add("active");
     }
 })
 
 document.querySelector(".prev").addEventListener("click", function () {
     slideElem[currentIndex].classList.remove("active");
+    thumbElem[currentIndex].classList.remove("active");
     if (currentIndex > 0) {
         currentIndex--;
     } else {
@@ -68,6 +76,7 @@ document.querySelector(".prev").addEventListener("click", function () {
     }
 
     slideElem[currentIndex].classList.add("active");
+    thumbElem[currentIndex].classList.add("active");    
 })
 
 let autoSlider = startAutoSlider();
@@ -77,12 +86,16 @@ function startAutoSlider() {
     return setInterval(function () {
         if (currentIndex < slideElem.length - 1) {
             slideElem[currentIndex].classList.remove("active");
+            thumbElem[currentIndex].classList.remove("active");
             currentIndex++;
             slideElem[currentIndex].classList.add("active");
+            thumbElem[currentIndex].classList.add("active");
         } else {
             slideElem[currentIndex].classList.remove("active");
+            thumbElem[currentIndex].classList.remove("active");
             currentIndex = 0;
             slideElem[currentIndex].classList.add("active");
+            thumbElem[currentIndex].classList.add("active");
         }
     }, 3000);
 }
@@ -97,3 +110,13 @@ itemsElem.addEventListener("mouseleave", function () {
         autoSlider = startAutoSlider();
     }
 });
+
+thumbElem.forEach((curThumb, index) => {
+    curThumb.addEventListener("click", function() {
+        slideElem[currentIndex].classList.remove("active");
+        thumbElem[currentIndex].classList.remove("active");
+        curThumb.classList.add("active");
+        slideElem[index].classList.add("active");
+        currentIndex = index;
+    })
+})
